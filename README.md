@@ -4,6 +4,8 @@ It follows CatLike Coding's tutorial up to Tutorial #4 Irregularity. <br/>
 This project uses individual ArrayMesh instance to represent each hex tile. <br/>
 While this approach may work for small scale hex grids, it is highly unoptimized for larger sized grids. <br/>
 
+![Local Image](Screenshots/hex-grid-godot.png) <br/>
+
 ## Camera Control
 While in play mode, hold RMB plus WASD to move around the camera and explore the hex grid.
 
