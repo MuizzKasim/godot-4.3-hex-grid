@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch71tmvohbks7"]
+
+[ext_resource type="Script" path="res://Scripts/hex_grid.gd" id="1_8o6lv"]
+[ext_resource type="Script" path="res://Scripts/camera_controller.gd" id="1_werra"]
+[ext_resource type="Script" path="res://Scripts/hex_map_editor.gd" id="3_ytwib"]
+[ext_resource type="Script" path="res://Scripts/hex_map_editor_ui.gd" id="4_vy8et"]
+[ext_resource type="ButtonGroup" uid="uid://unjsxkweihfb" path="res://Resources/hex_map_chekboxes.tres" id="5_skunb"]
+
+[node name="HexGrid" type="Node3D" node_paths=PackedStringArray("raycast", "hex_map_editor_ui")]
+script = ExtResource("1_8o6lv")
+width = 6
+raycast = NodePath("RayCast3D")
+hex_map_editor_ui = NodePath("Control/HexMapEditorUI")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.352626, 0.935764, 0, -0.935764, -0.352626, 33.881, 95.3601, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.688165, 0.725554, 0, -0.725554, 0.688165, 46.0085, 36.7748, 76.3317)
+script = ExtResource("1_werra")
+
+[node name="RayCast3D" type="RayCast3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("3_ytwib")
+camera = NodePath("../Camera3D")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HexMapEditorUI" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 91.0
+offset_bottom = 156.0
+script = ExtResource("4_vy8et")
+
+[node name="YellowCheckBox" type="CheckBox" parent="Control/HexMapEditorUI"]
+layout_mode = 2
+button_group = ExtResource("5_skunb")
+text = "Yellow"
+
+[node name="GreenCheckBox" type="CheckBox" parent="Control/HexMapEditorUI"]
+layout_mode = 2
+button_group = ExtResource("5_skunb")
+text = "Green"
+
+[node name="BlueCheckBox" type="CheckBox" parent="Control/HexMapEditorUI"]
+layout_mode = 2
+button_group = ExtResource("5_skunb")
+text = "Blue"
+
+[node name="WhiteCheckBox" type="CheckBox" parent="Control/HexMapEditorUI"]
+layout_mode = 2
+button_pressed = true
+button_group = ExtResource("5_skunb")
+text = "White"
+
+[node name="ElevationSlider" type="HSlider" parent="Control/HexMapEditorUI"]
+layout_mode = 2
+max_value = 6.0

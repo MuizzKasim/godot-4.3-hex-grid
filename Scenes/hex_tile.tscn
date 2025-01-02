@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dula0qx0s71jq"]
+
+[ext_resource type="Script" path="res://Scripts/hex_tile.gd" id="1_1odcm"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0gqdv"]
+
+[node name="HexTile" type="MeshInstance3D" node_paths=PackedStringArray("label3d")]
+mesh = SubResource("ArrayMesh_0gqdv")
+script = ExtResource("1_1odcm")
+label3d = NodePath("Label3D")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.01, 0)
+text = "test"
+font_size = 500
+outline_size = 127
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
