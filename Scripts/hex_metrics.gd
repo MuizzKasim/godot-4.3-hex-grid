@@ -17,6 +17,7 @@ const HORIZONTAL_TERRACE_STEP_SIZE: float = 1/ float(TERRACE_STEPS)
 const VERTICAL_TERRACE_STEP_SIZE: float = 1/ (float(TERRACES_PER_SLOPE) + 1)
 
 const NOISE_SOURCE: Texture2D  = preload('res://Resources/noise.png')
+static var noise_image: Image = NOISE_SOURCE.get_image()
 const CELL_PERTURB_STRENGTH: float = 4
 const ELEVATION_PERTURB_STRENGTH: float = 1.5
 const NOISE_SCALE : float = 0.5  # 0.1 to 5 - high frequency to low frequency
@@ -123,7 +124,7 @@ static func get_edge_type(elevation_1: int, elevation_2: int) -> int:
 	return edge_type.Cliff
 
 static func sample_noise(pos: Vector3) -> Color:
-	return NOISE_SOURCE.get_image().get_pixelv(Vector2(
+	return noise_image.get_pixelv(Vector2(
 		pos.x , pos.z ))
 
 static func perturb(pos: Vector3) -> Vector3:
